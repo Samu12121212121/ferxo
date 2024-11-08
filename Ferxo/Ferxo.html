@@ -13,7 +13,7 @@
         }
 
         header {
-            background-color: #2A3132; /* Color del menú */
+            background-color:   #59656F; /* Color del menú azul */
             color: white;
             padding: 10px 0;
             text-align: center;
@@ -41,11 +41,25 @@
         }
 
         .hero {
-            background-image: url('logo.jpg'); /* Cambia esto por la URL de tu imagen */
+            background-image: url('ferxoss.jpg'); /* Cambia esto por la URL de tu imagen */
+            background-color: rgb(37, 150, 190);
             height: 500px;
             background-size: cover;
             background-position: center;
             margin-top: 60px; /* Espacio para que no quede tapada por el menú */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-inner {
+            background-image: url('logo.jpg'); /* Cambia esto por la URL de tu segunda imagen */
+            width: 50%; /* Ocupa el 50% del ancho */
+            height: 80%;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra suave */
         }
 
         .section1 {
@@ -170,11 +184,13 @@
     <nav>
         <a href="Ferxo.html">Home</a>
         <a href="FerxoR.html">Reservas</a>
-       
     </nav>
 </header>
 
-<div class="hero"></div>
+<!-- Hero Section -->
+<div class="hero">
+    <div class="hero-inner"></div> <!-- Contenedor que ocupa el 50% del espacio y tiene una imagen de fondo -->
+</div>
 
 <div class="section1">
     <h2>Bienvenido a Peluquería Ferxo</h2>
