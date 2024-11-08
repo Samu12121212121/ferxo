@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Ejemplo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Color de fondo */
+        }
+
+        header {
+            background-color: #2A3132; /* Color del menú */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            margin: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 86, 179, 0.8); /* Color más oscuro al pasar el mouse */
+        }
+
+        .search-section {
+            height: 200px; /* Altura de la sección de búsqueda */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e9e9e9; /* Color de fondo de la sección */
+            margin-top: 60px; /* Espacio para el menú fijo */
+        }
+
+        .button-container {
+            width: 600px; /* Ancho del contenedor de botones */
+            height: 200px; /* Altura del contenedor de botones */
+            display: flex;
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+        }
+
+        .button {
+            margin: 0 25px; /* Margen entre botones */
+            padding: 10px 20px;
+            background-color: #336B87; /* Color de los botones */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .main-section {
+            display: flex;
+            justify-content: center;
+            height: 1000px; /* Altura de la sección */
+            width: 100%;
+            background-color: #e9e9e9; /* Color de fondo de la sección */
+        }
+
+        .column {
+            width: 200px; /* Ancho de cada columna */
+            margin: 0 25px; /* Espacio de 250px entre columnas */
+            display: flex;
+            flex-direction: column; /* Columnas verticales */
+            justify-content: flex-start; /* Alinear al inicio */
+        }
+
+        .key {
+            height: 510px; /* Altura de cada tecla (triplicado) */
+            background-color: #336B87; /* Color de las teclas */
+            margin-bottom: 5px; /* Espacio entre teclas */
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function filterColumns(category) {
+            const columns = document.querySelectorAll('.column');
+            columns.forEach(column => {
+                // Aquí puedes definir cómo se filtrarán los elementos de cada columna
+                // Por ejemplo, mostrar solo columnas que tengan un data-attribute que coincida con la categoría
+                const keys = column.querySelectorAll('.key');
+                keys.forEach(key => {
+                    if (key.dataset.category === category || category === 'all') {
+                        key.style.display = 'block';
+                    } else {
+                        key.style.display = 'none';
+                    }
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="Ferxo.html">Home</a>
+        <a href="FerxoR.html">Reservas</a>
+        <a href="Cortes.html">Pestañas</a>
+    </nav>
+</header>
+
+<div class="search-section">
+    <div class="button-container">
+        <button class="button" onclick="filterColumns('category1')">Categoría 1</button>
+        <button class="button" onclick="filterColumns('category2')">Categoría 2</button>
+        <button class="button" onclick="filterColumns('category3')">Categoría 3</button>
+        <button class="button" onclick="filterColumns('all')">Mostrar Todos</button>
+    </div>
+</div>
+
+<div class="main-section">
+    <div class="column">
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category2"></div>
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category2"></div>
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category1"></div>
+    </div>
+
+    <div class="column">
+        <div class="key" data-category="category2"></div>
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category2"></div>
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category2"></div>
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category2"></div>
+    </div>
+
+    <div class="column">
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category2"></div>
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category2"></div>
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category1"></div>
+    </div>
+
+    <div class="column">
+        <div class="key" data-category="category2"></div>
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category2"></div>
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category2"></div>
+    </div>
+
+    <div class="column">
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category2"></div>
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category1"></div>
+        <div class="key" data-category="category2"></div>
+        <div class="key" data-category="category3"></div>
+        <div class="key" data-category="category1"></div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Página de Ejemplo</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - Peluquería NCO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            background-image: url('sala3.jpg'); /* Reemplaza con la ruta de tu imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px; /* Espaciado a los lados */
+            position: relative;
+        }
+
+        .logo {
+            width: 150px; /* Ajusta el tamaño del logo */
+            margin-right: 20px; /* Espacio entre el logo y el título */
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: white; /* Color del texto */
+        }
+
+        .menu {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center; /* Centrado horizontal */
+            width: 100%;
+            margin-top: 10px; /* Espacio entre el header y el menú */
+        }
+
+        .menu ul {
+            list-style-type: none;
+            display: flex; /* Cambiado a flex para horizontal */
+            margin: 0;
+            padding: 0; /* Agregado para eliminar padding */
+        }
+
+        .menu li {
+            margin: 0 15px; /* Espacio entre elementos del menú */
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px; /* Espaciado interno */
+            transition: background-color 0.3s;
+            border-radius: 5px; /* Bordes redondeados */
+        }
+
+        .menu a:hover {
+            background-color: #007BFF; /* Color al pasar el ratón */
+            color: white; /* Color del texto al pasar el ratón */
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto; /* Centra el contenido */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column; /* Vertical */
+            gap: 15px; /* Espaciado entre campos */
+            max-width: 400px; /* Ancho máximo del formulario */
+            margin: 0 auto; /* Centrar formulario */
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Color de fondo al pasar el ratón */
+        }
+
+        .reservation-message {
+            text-align: center;
+            margin-top: 20px;
+            color: #28a745; /* Color verde para mensaje de éxito */
+
+        }
+        header {
+            background-color: #2A3132; /* Color del menú */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed; /* Fijo en la parte superior */
+            width: 100%; /* Ocupa todo el ancho */
+            top: 0; /* Se mantiene en la parte superior */
+            z-index: 1000; /* Asegura que esté por encima del contenido */
+            transition: background-color 0.3s; /* Transición suave para el cambio de color */
+        }
+
+        nav {
+            margin: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 15px; /* Aumentado el padding */
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 86, 179, 0.8); /* Color más oscuro al pasar el mouse */
+        }
+
+    </style>
+</head>
+<body>
+    
+
+    <header>
+  
+        <nav>
+            <a href="Ferxo.html">Home</a>
+            <a href="FerxoR.html">Reservas</a>
+            <a href="Cortes.html">Pestañas</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Reservas</h1>
+        <form id="reservationForm" method="POST" action="send_reservation.php">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Teléfono:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="date">Día:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Hora:</label>
+            <select id="time" name="time" required>
+                <!-- Opciones de tiempo generadas mediante JavaScript -->
+            </select>
+
+            <input type="submit" value="Reservar">
+        </form>
+        <div class="reservation-message" id="reservationMessage"></div>
+    </div>
+
+    <script>
+        const timeSelect = document.getElementById('time');
+        const reservations = {}; // Almacenaremos las reservas aquí
+
+        function populateTimeOptions() {
+            const dateInput = document.getElementById('date').value;
+            const day = new Date(dateInput);
+            const dayOfWeek = day.getDay();
+
+            timeSelect.innerHTML = ''; // Limpiar las opciones anteriores
+
+            // Verificar si la fecha es martes, domingo o miércoles (si corresponde)
+            const isClosed = (dayOfWeek === 2) || (dayOfWeek === 0) || (dayOfWeek === 3);
+            if (isClosed || isNaN(day.getTime())) {
+                const option = document.createElement('option');
+                option.textContent = 'Cerrado';
+                option.disabled = true;
+                timeSelect.appendChild(option);
+                return;
+            }
+
+            // Generar horas de 30 en 30 minutos desde las 12:00 hasta las 20:00
+            for (let hour = 12; hour <= 20; hour++) {
+                for (let minute of [0, 30]) {
+                    const time = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+                    if (!reservations[`${dateInput} ${time}`]) { // Comprobar si la hora está ocupada
+                        const option = document.createElement('option');
+                        option.value = time;
+                        option.textContent = time;
+                        timeSelect.appendChild(option);
+                    }
+                }
+            }
+        }
+
+        document.getElementById('date').addEventListener('change', populateTimeOptions);
+        populateTimeOptions(); // Llamar para inicializar las opciones al cargar la página
+
+        document.getElementById('reservationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar el envío normal del formulario
+
+            const dateInput = document.getElementById('date').value;
+            const timeInput = document.getElementById('time').value;
+
+            const reservationKey = `${dateInput} ${timeInput}`;
+            if (!reservations[reservationKey]) {
+                // Agregar la reserva
+                reservations[reservationKey] = {
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value,
+                };
+
+                document.getElementById('reservationMessage').textContent = '¡Reserva realizada con éxito!';
+                this.reset(); // Reiniciar el formulario
+                populateTimeOptions(); // Actualizar las opciones de tiempo
+            } else {
+                document.getElementById('reservationMessage').textContent = 'La hora seleccionada ya está reservada. Por favor, elige otra.';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería NCO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #34675c; /* Color de fondo del body */
+        }
+
+        header {
+            background-color: #2A3132; /* Color del menú */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed; /* Fijo en la parte superior */
+            width: 100%; /* Ocupa todo el ancho */
+            top: 0; /* Se mantiene en la parte superior */
+            z-index: 1000; /* Asegura que esté por encima del contenido */
+            transition: background-color 0.3s; /* Transición suave para el cambio de color */
+        }
+
+        nav {
+            margin: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 15px; /* Aumentado el padding */
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 86, 179, 0.8); /* Color más oscuro al pasar el mouse */
+        }
+
+        .hero {
+            background-image: url('logo.jpg'); /* Cambia esto por la URL de tu imagen */
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            margin-top: 60px; /* Espacio para que no quede tapada por el menú */
+        }
+
+        .section1 {
+            background-color: #7Da3A1; /* Cambiado a blanco */
+            border-radius: 10px;
+            padding: 40px; /* Padding interno */
+            margin: 20px auto; /* Margen vertical, centrado horizontalmente */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            min-height: 900px; /* Altura mínima de la sección */
+            text-align: center; /* Centra el texto */
+            color: #ffffff; /* Texto en un color más oscuro para contraste */
+            width: 50%; /* Ocupa el 96% del ancho total */
+            box-sizing: border-box; /* Incluye el padding en el ancho total */
+            position: relative;
+            top: 0px;
+            left: 340px;
+        }
+
+        .image-section {
+            background-image: url('ferxoss.jpg'); /* Cambia esto por la URL de tu segunda imagen */
+            height: 400px; /* Altura de la sección de imagen */
+            background-size: cover;
+            background-position: center;
+            margin: 20px 0; /* Margen vertical */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Ocupa el 100% del ancho de la pantalla */
+            max-width: none; /* Sin ancho máximo */
+            margin-left: 0; /* Sin margen izquierdo */
+            margin-right: 0; /* Sin margen derecho */
+        }
+
+        .video-container {
+            width: 500px; /* Ancho del contenedor de vídeo */
+            height: 900px; /* Alto del contenedor de vídeo */
+            margin: 20px auto; /* Margen vertical */
+            position: absolute; /* Posicionamiento relativo para centrar */
+            top: 560px; /* Ajuste para que esté bien ubicado */
+            left: 10%; /* Ubicación a la izquierda */
+            background-color: #fff; /* Fondo blanco para el contenedor de vídeos */
+            border: 5px solid #2A3132; /* Borde oscuro alrededor del contenedor */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+            overflow: hidden; /* Esconde desbordes */
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Carrusel de 3 imágenes a la vez con fondo blanco detrás */
+        .carrusel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background-color: white; /* Fondo blanco */
+            padding: 20px 0; /* Espaciado alrededor del carrusel */
+        }
+
+        .carrusel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carrusel-images img {
+            width: 33.33%; /* Mostrar 3 imágenes a la vez */
+            height: auto;
+            flex-shrink: 0;
+            margin: 0 10px; /* Separación entre las imágenes */
+            border-radius: 8px; /* Bordes redondeados para las imágenes */
+        }
+
+        /* Controles del carrusel */
+        .carrusel-prev, .carrusel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        .carrusel-prev {
+            left: 10px;
+        }
+
+        .carrusel-next {
+            right: 10px;
+        }
+
+        /* Nueva sección de "Nuestros trabajos" */
+        .work-section {
+            background-color: white; /* Fondo blanco */
+            padding: 40px 20px;
+            text-align: center; /* Centra el texto */
+            margin: 20px auto; /* Márgenes centrados */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%; /* Ajusta el ancho */
+            box-sizing: border-box; /* Incluye el padding en el ancho total */
+        }
+
+        .work-section h1 {
+            margin: 0;
+            color: #2A3132; /* Color oscuro para el título */
+            font-size: 2.5em;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="Ferxo.html">Home</a>
+        <a href="FerxoR.html">Reservas</a>
+       
+    </nav>
+</header>
+
+<div class="hero"></div>
+
+<div class="section1">
+    <h2>Bienvenido a Peluquería Ferxo</h2>
+    <p>Nos especializamos en ofrecer cortes de pelo y afeitados de calidad con un toque de estilo clásico y moderno.<br> Somos un espacio diseñado especialmente para hombres que buscan algo más que un simple corte: buscamos resaltar lo mejor de ti, respetando tu personalidad y tu estilo único.</p><br>
+    <h1>Nuestros servicios</h1><br>
+    <ul>
+        <li><strong>Cortes de cabello personalizados:</strong> Desde los cortes clásicos hasta los más modernos y atrevidos. Ya sea que prefieras un estilo tradicional o algo más contemporáneo, nuestros barberos se aseguran de que salgas con el look que mejor te representa.</li><br>
+        <li><strong>Afeitado clásico con navaja:</strong> Relájate y disfruta de un afeitado al estilo tradicional, con espuma caliente y navaja, para una experiencia de suavidad y precisión que solo nosotros sabemos ofrecer.</li><br>
+        <li><strong>Arreglo de barba:</strong> Ya sea que quieras mantenerla bien cuidada o darle un cambio de estilo, en Barbería NCO te ayudamos a conseguir la barba perfecta. También realizamos recortes y detallados para que luzcas siempre impecable.</li><br>
+        <li><strong>Diseño y mantenimiento de líneas:</strong> Para los que prefieren un estilo más marcado, nos especializamos en líneas definidas y detalles precisos en cortes y barbas.</li><br>
+        <li><strong>Cortes para caballeros:</strong> Estilos clásicos y sofisticados ideales para quienes buscan mantener una imagen elegante y cuidada.</li><br>
+    </ul>
+</div>
+
+<!-- Sección de "Nuestros trabajos" -->
+<div class="work-section">
+    <h1>Nuestros trabajos</h1>
+</div>
+
+<div class="video-container">
+    <!-- Aquí puedes insertar un vídeo -->
+    <iframe width="100%" height="100%" src="ferxo3.mp4" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<!-- Sección de Carrusel -->
+<section id="carrusel" class="carrusel-container">
+    <div class="carrusel-images">
+        <img src="car.JPG" alt="Imagen 1">
+        <img src="car1.JPG" alt="Imagen 2">
+        <img src="car2.JPG" alt="Imagen 3">
+        <img src="car3.JPG" alt="Imagen 4">
+        <img src="car4.JPG" alt="Imagen 5">
+        <img src="car5.JPG" alt="Imagen 6">
+        <img src="car7.JPG" alt="Imagen 7">
+        <img src="car9.JPG" alt="Imagen 8">
+    </div>
+    <button class="carrusel-prev">&#10094;</button>
+    <button class="carrusel-next">&#10095;</button>
+</section>
+
+<script>
+    // JavaScript para manejar los controles del carrusel
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.carrusel-images img');
+    const totalImages = images.length;
+    const imageContainer = document.querySelector('.carrusel-images');
+
+    const prevButton = document.querySelector('.carrusel-prev');
+    const nextButton = document.querySelector('.carrusel-next');
+
+    // Función para mover el carrusel a la izquierda
+    function moveToPrev() {
+        if (currentIndex === 0) {
+            currentIndex = totalImages - 3; // Cuando llega al principio, muestra las últimas tres
+        } else {
+            currentIndex--;
+        }
+        updateCarruselPosition();
+    }
+
+    // Función para mover el carrusel a la derecha
+    function moveToNext() {
+        if (currentIndex === totalImages - 3) {
+            currentIndex = 0; // Cuando llega al final, muestra las primeras tres
+        } else {
+            currentIndex++;
+        }
+        updateCarruselPosition();
+    }
+
+    // Función para actualizar la posición del carrusel
+    function updateCarruselPosition() {
+        const offset = -currentIndex * 33.33; // Cambiar el desplazamiento para mostrar tres imágenes a la vez
+        imageContainer.style.transform = `translateX(${offset}%)`;
+    }
+
+    // Event listeners para los botones
+    prevButton.addEventListener('click', moveToPrev);
+    nextButton.addEventListener('click', moveToNext);
+
+    // Cambio automático cada 5 segundos
+    setInterval(moveToNext, 5000); // Cambia la imagen cada 5 segundos
+</script>
+
+<footer>
+    <p>&copy; 2024 Peluquería NCO</p>
+</footer>
+
+</body>
+</html>
