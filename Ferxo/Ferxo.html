@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="ferxo.css">
+    <link rel="stylesheet" type="text/css" href="ferxo.css">
     <title>Peluquería Ferxo</title>
-   
 </head>
 <body>
 
@@ -39,14 +38,20 @@
     <h1>Nuestros trabajos</h1>
 </div>
 
-<div class="video-container" id="miVideo">
+<!-- Video de la Peluquería -->
+<div class="video-container">
     <!-- Aquí puedes insertar un vídeo -->
-    <iframe width="100%" height="100%" src="ferxo3.mp4" frameborder="0" allowfullscreen></iframe>
+    <video id="miVideo" width="100%" height="auto" controls>
+        <source src="ferxo3.mp4" type="video/mp4">
+        Tu navegador no soporta el formato de video.
+    </video>
 </div>
+
 <script>
-  // Ajustar el volumen al 50%
-  document.getElementById("miVideo").volume = 0.5;
+  // Ajustar el volumen al 40%
+  document.getElementById("miVideo").volume = 0.4; // El volumen se establece a 0.4 (40%)
 </script>
+
 <!-- Sección de Carrusel -->
 <section id="carrusel" class="carrusel-container">
     <div class="carrusel-images">
