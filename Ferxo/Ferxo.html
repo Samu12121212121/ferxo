@@ -38,18 +38,19 @@
     <h1>Nuestros trabajos</h1>
 </div>
 
-<!-- Video de la Peluquería -->
-<div class="video-container">
+<div class="video-container" id="miVideo">
     <!-- Aquí puedes insertar un vídeo -->
-    <video id="miVideo" width="100%" height="auto" controls>
-        <source src="ferxo3.mp4" type="video/mp4">
-        Tu navegador no soporta el formato de video.
-    </video>
+    <iframe width="100%" height="100%" src="ferxo3.mp4" frameborder="0" allowfullscreen></iframe>
 </div>
 
+<!-- Aquí va el código JavaScript -->
 <script>
-  // Ajustar el volumen al 40%
-  document.getElementById("miVideo").volume = 0.4; // El volumen se establece a 0.4 (40%)
+  window.onload = function() {
+      var video = document.getElementById("miVideo");
+      if (video) {
+          video.volume = 0.4; // Ajusta el volumen al 40%
+      }
+  };
 </script>
 
 <!-- Sección de Carrusel -->
