@@ -121,8 +121,8 @@
             text-align: center;
             margin-top: 20px;
             color: #28a745; /* Color verde para mensaje de éxito */
-
         }
+
         header {
             background-color: #2A3132; /* Color del menú */
             color: white;
@@ -153,25 +153,22 @@
 
         .container1 {
             background-color: #f9f9f9;
-             width: 100%;
+            width: 100%;
             height: 100px;
         }
     </style>
 </head>
 <body>
-    
-
     <header>
-  
         <nav>
             <a href="Ferxo.html">Home</a>
             <a href="FerxoR.html">Reservas</a>
-          
         </nav>
     </header>
-  <div class="container1">
-      
-  </div>
+
+    <div class="container1">
+    </div>
+
     <div class="container">
         <h1>Reservas</h1>
         <form id="reservationForm" method="POST" action="send_reservation.php">
@@ -180,6 +177,9 @@
 
             <label for="phone">Teléfono:</label>
             <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required> <!-- Nuevo campo de correo -->
 
             <label for="date">Día:</label>
             <input type="date" id="date" name="date" required>
@@ -191,6 +191,7 @@
 
             <input type="submit" value="Reservar">
         </form>
+
         <div class="reservation-message" id="reservationMessage"></div>
     </div>
 
@@ -244,6 +245,7 @@
                 reservations[reservationKey] = {
                     name: document.getElementById('name').value,
                     phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value, // Incluir el correo electrónico
                 };
 
                 document.getElementById('reservationMessage').textContent = '¡Reserva realizada con éxito!';
